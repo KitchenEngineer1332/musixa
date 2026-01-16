@@ -121,6 +121,37 @@
 
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+.pause {
+  position: relative;
+  width: 14px;
+  height: 18px;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow:
+    0 0 0 6px rgba(212,175,55,0.25),
+    0 4px 10px rgba(58,36,29,0.4);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  box-shadow:
+    0 0 0 6px rgba(212,175,55,0.25),
+    0 4px 10px rgba(58,36,29,0.4);
+}
+
+.pause::before,
+.pause::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--ivory);
+  border-radius: 2px;
+}
+
+.pause::before { left: 0; }
+.pause::after  { right: 0; }
+
 .big-btn:hover {
   transform: translateY(-1px);
   box-shadow:
@@ -230,5 +261,112 @@ input[type="range"]::-moz-range-thumb {
   background: var(--gold);
   border: 2px solid var(--ivory);
   box-shadow: 0 3px 8px rgba(58,36,29,0.35);
+}
+
+@media (max-width: 520px) {
+
+  body {
+    padding: 16px;
+  }
+
+.controls {
+  gap: 10px;
+}
+.art {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    margin: 0;
+  }
+.player {
+    padding-top: 16px;
+  }
+.controls > button,
+.controls > .big-btn {
+  margin-bottom: 4px;
+}
+
+
+  .player {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .art {
+    height: 160px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .small {
+    justify-content: center;
+  }
+
+  .progress-wrap {
+    width: 100%;
+  }
+
+  .playlist {
+    max-height: 180px;
+  }
+
+  .big-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
+}
+.big-btn {
+  line-height: 1;
+}
+@media (max-width: 520px) {
+  .controls {
+    align-items: center;
+  }
+
+  .controls > .icon-btn {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  input[type="range"] {
+    height: 10px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    margin-top: -6px;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+  }
+}
+.player {
+  overflow: hidden;
+}
+
+
+button, .big-btn {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+@media (max-width: 520px) {
+  .big-btn {
+    box-shadow:
+      0 12px 28px rgba(181,42,42,0.45),
+      inset 0 1px 1px rgba(255,255,255,0.35);
+  }
 }
 

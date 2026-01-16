@@ -150,7 +150,7 @@
   function updatePlayState(isPlaying){
     if (isPlaying){
       playBtn.classList.add('playing');
-      playBtn.textContent = '▌▌';
+      playBtn.innerHTML = '<span class="pause"></span>';
     } else {
       playBtn.classList.remove('playing');
       playBtn.textContent = '▶';

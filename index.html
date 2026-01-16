@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MP3 Player Themed from Image</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="player" id="player">
+    <div class="left">
+      <div class="art" id="art">
+        <div class="glow"></div>
+        <div class="placeholder" id="art-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 3v10l6-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <div style="font-size:15px">No track selected</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6)">Drop MP3s or click Open</div>
+        </div>
+      </div>
+
+      <label class="drop-zone" id="drop-zone">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="btn" id="open-btn" type="button">Open Audio</button>
+          <div class="file-info" id="file-info">No files selected</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="meta" id="queue-count">0</div>
+        </div>
+        <input id="file-input" type="file" accept="audio/*" multiple style="display:none">
+      </label>
+    </div>
+
+    <div class="right">
+      <div class="title-row">
+        <div>
+          <h1>🎧 Themed MP3 Player</h1>
+          <div class="meta">Local playback • Colors inspired by your image</div>
+        </div>
+        <div class="meta" id="now-playing">—</div>
+      </div>
+
+      <div class="controls" aria-hidden="false">
+        <button class="icon-btn" id="prev" title="Previous">⏮</button>
+
+        <div class="big-btn" id="play-btn" title="Play / Pause">▶</div>
+
+        <button class="icon-btn" id="next" title="Next">⏭</button>
+
+        <div class="progress-wrap">
+          <div class="progress" id="progress" title="Seek">
+            <div class="bar" id="progress-bar"></div>
+          </div>
+          <div class="time-row">
+            <div class="meta" id="current-time">0:00</div>
+            <div class="meta" id="duration">0:00</div>
+          </div>
+        </div>
+
+        <div class="small">
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.9" style="width:110px">
+        </div>
+      </div>
+
+      <ul class="playlist" id="playlist" aria-label="Playlist"></ul>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>

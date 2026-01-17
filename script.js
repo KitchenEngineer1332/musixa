@@ -24,6 +24,17 @@
   let objectUrls = [];
 
   // Helpers
+function cleanFileName(name) {
+  return name
+    .replace(/\.mp3$/i, '')   // remove .mp3
+    .replace(/[_-]/g, ' ')    // replace _ and - with space
+    .trim();
+}
+function truncateText(text, maxLength = 40) {
+  return text.length > maxLength
+    ? text.slice(0, maxLength) + '…'
+    : text;
+}
   function formatTime(sec){
     if (!isFinite(sec)) return '0:00';
     const s = Math.floor(sec % 60).toString().padStart(2,'0');
@@ -78,7 +89,14 @@
 
     queueCount.textContent = queue.length;
     fileInfo.textContent = queue.length ? `${queue.length} file(s)` : 'No files selected';
-    nowPlaying.textContent = currentIndex >= 0 ? queue[currentIndex].name : '—';
+    if (currentIndex >= 0) {
+     const fileName = queue[currentIndex].name;
+     const cleaned = cleanFileName(fileName);
+     nowPlaying.textContent = truncateText(cleaned, 42);
+    } else {
+     nowPlaying.textContent = '—';
+    }
+
   }
 
   function removeTrack(index){
@@ -153,7 +171,7 @@
       playBtn.innerHTML = '<span class="pause"></span>';
     } else {
       playBtn.classList.remove('playing');
-      playBtn.textContent = '▶';
+      playBtn.innerHTML = '<span class="play"></span>';
     }
   }
 
